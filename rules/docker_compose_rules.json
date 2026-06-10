@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "id": "COMP-001",
+      "title": "Container em modo privilegiado (privileged: true)",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "description": "O modo privilegiado concede todas as capacidades do kernel do host ao container, permitindo escape de sandbox.",
+      "remediation": "Remova a diretiva 'privileged: true' e utilize apenas as capacidades necessárias através de 'cap_add'."
+    },
+    {
+      "id": "COMP-002",
+      "title": "Mapeamento de porta administrativa exposta globalmente",
+      "severity": "HIGH",
+      "cvss": 7.5,
+      "description": "Portas sensíveis (como 22, 3306, 5432, 6379) expostas em 0.0.0.0 permitem conexões externas não autorizadas.",
+      "remediation": "Faça o bind da porta apenas no localhost (127.0.0.1:porta) ou utilize redes internas do Docker."
+    },
+    {
+      "id": "COMP-003",
+      "title": "Montagem do Socket do Docker (docker.sock)",
+      "severity": "HIGH",
+      "cvss": 8.5,
+      "description": "Montar o socket do Docker (/var/run/docker.sock) dentro de um container permite que ele controle todo o daemon do Docker no host.",
+      "remediation": "Evite montar o socket do Docker a menos que seja estritamente necessário e o container seja altamente confiável."
+    }
+  ]
+}
