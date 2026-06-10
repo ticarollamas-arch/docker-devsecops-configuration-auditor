@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "id": "DOCK-001",
+      "title": "Uso de imagem base com tag 'latest' ou ausente",
+      "severity": "MEDIUM",
+      "cvss": 5.3,
+      "description": "O uso da tag 'latest' pode causar instabilidade e trazer vulnerabilidades não testadas em builds futuros.",
+      "remediation": "Especifique uma tag de versão fixa e imutável (ex: python:3.11-alpine)."
+    },
+    {
+      "id": "DOCK-002",
+      "title": "Container executando como ROOT",
+      "severity": "HIGH",
+      "cvss": 8.1,
+      "description": "Por padrão, os containers rodam como root. Se o container for comprometido, o atacante terá privilégios administrativos.",
+      "remediation": "Adicione a instrução 'USER' no Dockerfile para alternar para um usuário sem privilégios."
+    },
+    {
+      "id": "DOCK-003",
+      "title": "Uso de instruções de atualização sem limpeza de cache",
+      "severity": "LOW",
+      "cvss": 3.3,
+      "description": "Executar comandos de atualização (ex: apt-get upgrade) sem limpar o cache aumenta o tamanho da imagem e mantém pacotes desnecessários.",
+      "remediation": "Combine comandos de instalação com a remoção de caches no mesmo passo de RUN."
+    }
+  ]
+}
